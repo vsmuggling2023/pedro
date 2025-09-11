@@ -7,19 +7,28 @@
 	<link href="app.css" rel="stylesheet">
 </head>
 <body>
+
 <div class="spinner">
-	<img src="pedro.png">
+	<img src="pedro.png" alt="Pedro">
 </div>
 
 <audio id="miAudio" loop>
 	<source src="audio.mp3" type="audio/mpeg">
+	Your browser does not support the audio element.
 </audio>
 
 <script>
 	document.addEventListener('click', function () {
-		var audio = document.getElementById('miAudio');
-		audio.play();
+		const audio = document.getElementById('miAudio');
+		audio.play()
+			.then(() => {
+				console.log("✅ Audio reproduciéndose");
+			})
+			.catch((error) => {
+				console.error("❌ Error al reproducir el audio:", error);
+			});
 	});
 </script>
+
 </body>
 </html>
